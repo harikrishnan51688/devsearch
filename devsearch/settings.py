@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-&o0ky+^*a((3yyg@gyqs1$i5skq+t01%31hf@r#7c3^o+f1n+n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['deavsearch.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['deavsearch.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -129,10 +129,10 @@ WSGI_APPLICATION = 'devsearch.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'notnwyjw',
-        'USER': 'notnwyjw',
-        'PASSWORD': 'IO5wPkYo6cb_hYIOzuiAe1QmPIlAyMGy',
-        'HOST': 'topsy.db.elephantsql.com',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': '5432'
     }
 }
@@ -196,8 +196,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'intothedigital369@gmail.com'
-EMAIL_HOST_PASSWORD = 'ozlxmxzzuagmxvjt'
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER'),
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD'),
 
 
 # Static files (CSS, JavaScript, Images)
@@ -222,8 +222,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # cloudinary setup for static file storage
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'devsearch',
-    'API_KEY': '466715464681697',
-    'API_SECRET': '1tWnpH6YX--8SupXII_DsdWBEwU'
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
