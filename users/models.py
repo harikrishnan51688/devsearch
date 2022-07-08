@@ -38,9 +38,12 @@ class Profile(models.Model):
     def imageURL(self):
         try:
             url = self.profile_image.url
+            split = url.split('upload')
+            split.insert(1, 'upload/q_auto:low')
+            final_url = ''.join(split)
         except:
-            url = ''
-        return url
+            final_url = ''
+        return final_url
 
 class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete=CASCADE, null=True, blank=True)

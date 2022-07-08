@@ -30,9 +30,12 @@ class Project(models.Model):
     def imageURL(self):
         try:
             url = self.featured_img.url
+            split = url.split('upload')
+            split.insert(1, 'upload/w_1200/q_auto:low')
+            final_url = ''.join(split)
         except:
-            url = ''
-        return url
+            final_url = ''
+        return final_url
     
     @property
     def reviewers(self):

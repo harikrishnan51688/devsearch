@@ -13,7 +13,11 @@ from datetime import timedelta
 from pathlib import Path
 import os
 import cloudinary_storage
+import environ
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
